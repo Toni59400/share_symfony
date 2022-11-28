@@ -23,13 +23,15 @@ class BaseController extends AbstractController
     public function contact(Request $request): Response
     {
         $contact = new Contact();
-        $form = $this->createForm(ContactType::class);
+        $form = $this->createForm(ContactType::class, $contact);
 
         if($request->isMethod('POST')){
             $form->handleRequest($request);
             if ($form->isSubmitted()&&$form->isValid()){
-                $this->addFlash('notice','Message envoyé');
-                return $this->redirectToRoute('contact');
+                $contact->setdate_envoi(new \Datetime());
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($contact);
+                $em->flush();
             }
         }
 
