@@ -4,4 +4,32 @@
 
 {% block body %}
     <h1 class="text-center text-primary"> Share : partagez vos fichiers </h1>
+    <div class="container-fluid">
+		<h1 class="text-center text-primary mt-4 pt-4 display-1 fw-bold">
+			Nos avis Clients !</h1>
+
+
+		<div>
+			<div class=" col-md-3 bg-white text-primary" style="width:50%;">
+				<div class="table-responsive">
+                    {% for a in avis %}
+                    <div class="col" style="float: left; padding: 10px; margin-bottom: 10px; width: 50%; box-sizing : border-box; ">
+                        <div class="card shadow-sm">
+                          <div class="card-body">
+                            <p class="card-text">{{a.textAvis | capitalize}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="btn-group">
+                                <p  class="btn btn-sm btn-outline-secondary">{{ a.nom | capitalize }}</p>
+                                <p  class="btn btn-sm btn-outline-secondary">{{ a.prenom | capitalize }}</p>
+                              </div>
+                              <small class="text-muted">{{ a.note | capitalize }}</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

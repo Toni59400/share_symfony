@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Avis{% endblock %}
+
+{% block body %}
+    	<div class="container-fluid">
+	    <div class="row justify-content-center">
+			
+                    <div class="col-10 text-primary">
+                        <h1 class="text-center mt-4 pt-4 display-1 ">Donnez Mon Avis</h1>
+                            {{form(form_avis)}}
+                    </div>    
+	    </div>
+	</div>
+{% endblock %}
